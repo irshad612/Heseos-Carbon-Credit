@@ -1,0 +1,3273 @@
+<!DOCTYPE html>
+<!-- saved from url=(0200)file:///C:/Users/HP/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/CD2FC33383F83825E5E8F64FF3C396D62A14EC1A/transfers/2026-14/heseos_carbon_dashboard_REDESIGNED.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heseos - Smart Office Energy Intelligence</title>
+    <script src="./Heseos - Smart Office Energy Intelligence_files/chart.min.js.download"></script>
+    <script src="./Heseos - Smart Office Energy Intelligence_files/html2pdf.bundle.min.js.download"></script>
+    <style>
+        :root {
+            --primary-orange: #FF6B35;
+            --secondary-orange: #FFA500;
+            --dark-bg: #0a0e27;
+            --card-bg: #1a2842;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #0f1535 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== DYNAMIC LEAD FORM (APP DASHBOARD STYLE) ===== */
+        .modal {
+            display: flex;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 21, 53, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #1a2842 0%, #243456 100%);
+            border: 2px solid var(--primary-orange);
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 30px 80px rgba(255, 107, 53, 0.25);
+            animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .modal-logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.2);
+        }
+
+        .modal-header h1 {
+            font-size: 32px;
+            color: var(--primary-orange);
+            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .modal-header p {
+            color: var(--accent-blue);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .modal-subtitle {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-field {
+            position: relative;
+        }
+
+        .form-field label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-field input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 15px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-field input:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            background: rgba(255, 107, 53, 0.1);
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-field input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .form-benefits {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .benefit-icon {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #1a2842 0%, #243456 100%);
+            border-bottom: 3px solid var(--primary-orange);
+            padding: 20px 40px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            background: white;
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+            object-fit: contain;
+        }
+
+        .logo-text h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .logo-text p {
+            font-size: 13px;
+            color: var(--accent-blue);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header-tagline {
+            font-size: 14px;
+            color: var(--accent-green);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* ===== CONFIRMATION MESSAGE ===== */
+        .confirmation-message {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            z-index: 8000;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateX(-50%) translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* ===== PDF LOADING ===== */
+        .pdf-loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .pdf-loading.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 107, 53, 0.2);
+            border-top-color: var(--primary-orange);
+            border-right-color: var(--secondary-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-text {
+            color: var(--primary-orange);
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .loading-progress {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-orange), var(--secondary-orange));
+            width: 0%;
+            animation: progress 5s ease-in-out forwards;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        /* ===== CONTAINER & TABS ===== */
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid rgba(255, 107, 53, 0.2);
+            padding-bottom: 0;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 15px 25px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary-orange);
+            border-bottom-color: var(--primary-orange);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-orange);
+            border-bottom-color: var(--primary-orange);
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== FORM STYLES ===== */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        select, input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(26, 58, 58, 0.5);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input[type="number"]:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 107, 53, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(255, 107, 53, 0.4);
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(26, 58, 58, 0.8) 100%);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* ===== METRICS WITH DYNAMIC COLORS ===== */
+        .metric {
+            background: rgba(255, 107, 53, 0.08);
+            border-left: 4px solid var(--primary-orange);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .metric.good {
+            background: rgba(16, 185, 129, 0.08);
+            border-left-color: var(--accent-green);
+        }
+
+        .metric.best {
+            background: rgba(59, 130, 246, 0.08);
+            border-left-color: var(--accent-blue);
+        }
+
+        .metric.bad {
+            background: rgba(239, 68, 68, 0.08);
+            border-left-color: var(--accent-red);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-orange);
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .metric.good .metric-value {
+            color: var(--accent-green);
+        }
+
+        .metric.best .metric-value {
+            color: var(--accent-blue);
+        }
+
+        .metric.bad .metric-value {
+            color: var(--accent-red);
+        }
+
+        .metric-unit {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .comparison-table th {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary-orange);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .comparison-table .positive {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* ===== NOTE CARDS ===== */
+        .note-card {
+            background: linear-gradient(135deg, #f0fff4 0%, #dbeafe 100%);
+            border-left: 5px solid var(--accent-green);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+        }
+
+        .note-card.orange {
+            background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+            border-left-color: var(--primary-orange);
+        }
+
+        .note-card h3 {
+            color: var(--accent-green);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .note-card.orange h3 {
+            color: var(--primary-orange);
+        }
+
+        .note-value {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+
+        .note-card.orange .note-value {
+            color: var(--primary-orange);
+        }
+
+        .note-description {
+            color: #333;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ===== IMPACT GRID ===== */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .impact-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+            border: 2px solid var(--accent-green);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .impact-card.orange {
+            border-color: var(--primary-orange);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 165, 0, 0.05) 100%);
+        }
+
+        .impact-card.orange:hover {
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .impact-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .impact-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .impact-number {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent-green);
+            margin-bottom: 5px;
+        }
+
+        .impact-card.orange .impact-number {
+            color: var(--primary-orange);
+        }
+
+        /* ===== DOWNLOAD BUTTON ===== */
+        .download-btn {
+            background: linear-gradient(135deg, var(--accent-green) 0%, #0ea5a5 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* ===== HIDDEN REPORT ===== */
+        #reportContent {
+            display: none;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(255, 107, 53, 0.08);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            background: rgba(255, 107, 53, 0.15);
+            border-color: var(--primary-orange);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary-orange);
+        }
+
+        .value-display {
+            color: var(--primary-orange);
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-orange), transparent);
+            margin: 30px 0;
+        }
+
+        /* ===== DYNAMIC LEAD FORM (APP DASHBOARD STYLE) ===== */
+        .modal {
+            display: flex;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 21, 53, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #1a2842 0%, #243456 100%);
+            border: 2px solid var(--primary-orange);
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 30px 80px rgba(255, 107, 53, 0.25);
+            animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .modal-logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .modal-header h1 {
+            font-size: 32px;
+            color: var(--primary-orange);
+            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .modal-header p {
+            color: var(--accent-blue);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .modal-subtitle {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-field {
+            position: relative;
+        }
+
+        .form-field label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-field input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 15px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-field input:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            background: rgba(255, 107, 53, 0.1);
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-field input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .form-benefits {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .benefit-icon {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #1a2842 0%, #243456 100%);
+            border-bottom: 3px solid var(--primary-orange);
+            padding: 20px 40px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            background: white;
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+            object-fit: contain;
+        }
+
+        .logo-text h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .logo-text p {
+            font-size: 13px;
+            color: var(--accent-blue);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header-tagline {
+            font-size: 14px;
+            color: var(--accent-green);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* ===== CONFIRMATION MESSAGE ===== */
+        .confirmation-message {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            z-index: 8000;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateX(-50%) translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* ===== PDF LOADING ===== */
+        .pdf-loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .pdf-loading.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 107, 53, 0.2);
+            border-top-color: var(--primary-orange);
+            border-right-color: var(--secondary-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-text {
+            color: var(--primary-orange);
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .loading-progress {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-orange), var(--secondary-orange));
+            width: 0%;
+            animation: progress 5s ease-in-out forwards;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        /* ===== CONTAINER & TABS ===== */
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid rgba(255, 107, 53, 0.2);
+            padding-bottom: 0;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 15px 25px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary-orange);
+            border-bottom-color: var(--primary-orange);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-orange);
+            border-bottom-color: var(--primary-orange);
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== FORM STYLES ===== */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        select, input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(26, 58, 58, 0.5);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input[type="number"]:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 107, 53, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(255, 107, 53, 0.4);
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(26, 58, 58, 0.8) 100%);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* ===== METRICS WITH DYNAMIC COLORS ===== */
+        .metric {
+            background: rgba(255, 107, 53, 0.08);
+            border-left: 4px solid var(--primary-orange);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .metric.good {
+            background: rgba(16, 185, 129, 0.08);
+            border-left-color: var(--accent-green);
+        }
+
+        .metric.best {
+            background: rgba(59, 130, 246, 0.08);
+            border-left-color: var(--accent-blue);
+        }
+
+        .metric.bad {
+            background: rgba(239, 68, 68, 0.08);
+            border-left-color: var(--accent-red);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-orange);
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .metric.good .metric-value {
+            color: var(--accent-green);
+        }
+
+        .metric.best .metric-value {
+            color: var(--accent-blue);
+        }
+
+        .metric.bad .metric-value {
+            color: var(--accent-red);
+        }
+
+        .metric-unit {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .comparison-table th {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary-orange);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table .positive {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* ===== NOTE CARDS ===== */
+        .note-card {
+            background: linear-gradient(135deg, #f0fff4 0%, #dbeafe 100%);
+            border-left: 5px solid var(--accent-green);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+        }
+
+        .note-card.orange {
+            background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+            border-left-color: var(--primary-orange);
+        }
+
+        .note-card h3 {
+            color: var(--accent-green);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .note-card.orange h3 {
+            color: var(--primary-orange);
+        }
+
+        .note-value {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+
+        .note-card.orange .note-value {
+            color: var(--primary-orange);
+        }
+
+        .note-description {
+            color: #333;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ===== IMPACT GRID ===== */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .impact-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+            border: 2px solid var(--accent-green);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .impact-card.orange {
+            border-color: var(--primary-orange);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 165, 0, 0.05) 100%);
+        }
+
+        .impact-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .impact-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .impact-number {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent-green);
+            margin-bottom: 5px;
+        }
+
+        .impact-card.orange .impact-number {
+            color: var(--primary-orange);
+        }
+
+        /* ===== DOWNLOAD BUTTON ===== */
+        .download-btn {
+            background: linear-gradient(135deg, var(--accent-green) 0%, #0ea5a5 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* ===== HIDDEN REPORT ===== */
+        #reportContent {
+            display: none;
+        }
+
+        .report-container {
+            background: white;
+            color: #1a1a1a;
+            padding: 60px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 4px solid #FF6B35;
+        }
+
+        .report-logo {
+            font-size: 42px;
+            color: #FF6B35;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+        }
+
+        .report-subtitle {
+            color: #0a0e27;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .report-title {
+            font-size: 32px;
+            color: #0a0e27;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .report-user-info {
+            color: #666;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .report-section {
+            margin-bottom: 40px;
+        }
+
+        .report-section-title {
+            font-size: 20px;
+            color: #FF6B35;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #FF6B35;
+            padding-bottom: 10px;
+        }
+
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .report-table th {
+            background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .report-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .report-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .report-highlight {
+            background: #f0fff4;
+            border-left: 5px solid #10b981;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 12px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(255, 107, 53, 0.08);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            background: rgba(255, 107, 53, 0.15);
+            border-color: var(--primary-orange);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary-orange);
+        }
+
+        .value-display {
+            color: var(--primary-orange);
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-orange), transparent);
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- LEAD FORM MODAL (APP DASHBOARD STYLE) -->
+    <div id="leadModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-logo">🏢</div>
+                <h1>HESEOS</h1>
+                <p>Smart Connected &amp; Sustainable Living</p>
+                <div class="modal-subtitle">
+                    Transform your office into an intelligent energy-efficient workplace.<br>
+                    Calculate your carbon impact &amp; unlock hidden savings today.
+                </div>
+            </div>
+            
+            <form class="modal-form" onsubmit="submitLead(event)">
+                <div class="form-field">
+                    <label for="userName">👤 Full Name</label>
+                    <input type="text" id="userName" name="name" placeholder="John Doe" required="">
+                </div>
+
+                <div class="form-field">
+                    <label for="userCity">📍 City</label>
+                    <input type="text" id="userCity" name="city" placeholder="e.g., Mumbai, Bangalore" required="">
+                </div>
+
+                <div class="form-field">
+                    <label for="userMobile">📱 Mobile Number</label>
+                    <input type="tel" id="userMobile" name="mobile" placeholder="+91 98765 43210" required="">
+                </div>
+
+                <div class="form-field">
+                    <label for="userEmail">✉️ Email ID</label>
+                    <input type="email" id="userEmail" name="email" placeholder="you@example.com" required="">
+                </div>
+
+                <button type="submit" class="submit-btn">⚡ Start Your Energy Journey</button>
+
+                <div class="form-benefits">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span id="assessmentCopy">Free personalized carbon assessment for your office space</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span>Discover annual savings potential with Heseos automation</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span>Unlock carbon credit monetization opportunities</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span>Get a professional Heseos report delivered to your email</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- PDF LOADING OVERLAY -->
+    <div class="pdf-loading" id="pdfLoading">
+        <div class="spinner"></div>
+        <div class="loading-text">🔄 Generating Your Heseos Report...</div>
+        <div class="loading-progress">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-text" style="font-size: 12px; margin-top: 10px;">5-6 seconds</div>
+    </div>
+
+    <!-- CONFIRMATION MESSAGE -->
+    <div id="confirmationMessage" style="display: none;"></div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div style="width: 80px; height: 80px; background: white; padding: 8px; border-radius: 12px; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                        <circle cx="100" cy="80" r="40" fill="#FF6B35" opacity="0.2"></circle>
+                        <path d="M60 100 Q100 60 140 100" stroke="#FF6B35" stroke-width="8" fill="none" stroke-linecap="round"></path>
+                        <path d="M50 110 Q100 50 150 110" stroke="#FF6B35" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.8"></path>
+                        <path d="M40 120 Q100 40 160 120" stroke="#FF6B35" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.6"></path>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>HESEOS</h1>
+                    <p>Smart Connected &amp; Sustainable Living</p>
+                </div>
+            </div>
+            <div class="header-tagline">🌱 CARBON CREDIT CALCULATOR</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- TABS -->
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="switchTab(&#39;property&#39;)">🏢 Office</button>
+            <button class="tab-btn" onclick="switchTab(&#39;appliances&#39;); loadDynamicAppliances();">⚡ Equipment</button>
+            <button class="tab-btn" onclick="switchTab(&#39;results&#39;)">📊 Results</button>
+            <button class="tab-btn" onclick="switchTab(&#39;scenarios&#39;)">🎯 Scenarios</button>
+            <button class="tab-btn" onclick="switchTab(&#39;credits&#39;)">💰 Credits</button>
+            <button class="tab-btn" onclick="switchTab(&#39;charts&#39;)">📈 Charts</button>
+        </div>
+
+        <!-- TAB 1: PROPERTY DETAILS -->
+        <div id="property" class="tab-content active">
+            <div class="card">
+                <div class="card-title">🏢 Location &amp; Office Profile</div>
+                
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>State *</label>
+                        <select id="state" onchange="updateCities(); updateRate(); validatePropertyTab()">
+                            <option value="">-- Select State / UT --</option>
+                            <optgroup label="Union Territories">
+                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli and Daman and Diu</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Ladakh">Ladakh</option>
+                                <option value="Puducherry">Puducherry</option>
+                            </optgroup>
+                            <optgroup label="States (A-M)">
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                            </optgroup>
+                            <optgroup label="States (N-W)">
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>City *</label>
+                        <select id="city" onchange="validatePropertyTab()"><option value="">Select City</option><option value="Mumbai">Mumbai</option><option value="Pune">Pune</option><option value="Nagpur">Nagpur</option><option value="Aurangabad">Aurangabad</option><option value="Nashik">Nashik</option><option value="Thane">Thane</option></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Business District / Campus</label>
+                    <input type="text" id="area" placeholder="e.g., BKC, Cyber City, Whitefield Tech Park" onchange="validatePropertyTab()">
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="card-title">🏢 Office Type</div>
+                
+                <div class="form-group">
+                    <label>Office Type *</label>
+                    <select id="propertyType" onchange="updateApplianceVisibility(); updateRate(); validatePropertyTab()">
+                        <option value="">-- Select Office Type --</option>
+                        <option value="SmallOffice">Small Office (10-20 seats)</option>
+                        <option value="MediumOffice">Medium Office (20-75 seats)</option>
+                        <option value="LargeOffice">Large Office (75-200 seats)</option>
+                        <option value="CoworkingSpace">Coworking Space</option>
+                        <option value="CorporateHQ">Corporate HQ / Multi-floor Office</option>
+                        <option value="CallCenter">Call Center / Extended-hours Ops</option>
+                    </select>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="card-title">📐 Office Floor Area</div>
+                
+                <div class="form-group">
+                    <label>Usable Floor Area: <span id="areaValue">--</span> sq ft *</label>
+                    <input type="range" id="builtUpArea" min="500" max="100000" value="" step="500" oninput="updateAreaDisplay(); validatePropertyTab()">
+                    <div class="value-display">Approximate office area under operations</div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="card-title" id="occupancyInfoTitle">👥 Office Operations</div>
+                
+                <div class="grid-2">
+                    <div class="form-group" id="peopleDiv">
+                        <label>Active Seats / Employees: <span id="peopleValue">--</span> *</label>
+                        <input type="range" id="people" min="5" max="500" value="" step="5" oninput="updatePeopleDisplay(); validatePropertyTab()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Monthly Electricity Bill (₹) *</label>
+                        <input type="number" id="monthlyBill" placeholder="Enter monthly power bill" min="2000" max="500000" step="500" onchange="validatePropertyTab()">
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="card-title">⚙️ System Configuration</div>
+                
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Equipment Age Profile</label>
+                        <select id="applianceAge" onchange="validatePropertyTab()">
+                            <option value="">-- Select Profile --</option>
+                            <option value="New">New / Recently Upgraded (0-3 years)</option>
+                            <option value="Moderate">Balanced Mix (3-7 years)</option>
+                            <option value="Old">Legacy Equipment (7+ years)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Heseos Automation Tier *</label>
+                        <select id="heseosTier" onchange="validatePropertyTab()">
+                            <option value="">-- Select Tier --</option>
+                            <option value="Basic">Basic (15% Savings)</option>
+                            <option value="Standard">Standard (32% Savings)</option>
+                            <option value="Premium">Premium (45% Savings)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="metric">
+                    <div class="metric-label">🔌 Commercial Electricity Rate (FY 2023-24)</div>
+                    <div class="metric-value">₹<span id="rateDisplay">11.50</span> <span class="metric-unit">/kWh</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: APPLIANCES -->
+        <div id="appliances" class="tab-content">
+            <div style="background: rgba(255, 107, 53, 0.1); padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--primary-orange);">
+                <p style="color: var(--text-secondary); margin: 0 0 8px 0; font-size: 14px;">Office Profile</p>
+                <h3 id="appliancesCategoryHeading" style="color: var(--primary-orange); margin: 0; font-size: 18px; font-weight: 700;">Small Office (10-20 seats)</h3>
+            </div>
+
+            <div class="card">
+                <div class="card-title">❄️ HVAC &amp; Air Quality</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-item" style="display: flex;">
+                        <input type="checkbox" id="hvacSystem" onchange="validateAppliancesTab()">
+                        <span>Central HVAC / VRV System</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="freshAirSystem" onchange="validateAppliancesTab()">
+                        <span>Fresh Air / Ventilation System</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="serverRoomCooling" onchange="validateAppliancesTab()">
+                        <span>Server Room Cooling</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="airPurifier" onchange="validateAppliancesTab()">
+                        <span>Air Purification Units</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="pantryWaterHeater" onchange="validateAppliancesTab()">
+                        <span>Pantry / Restroom Water Heater</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="pantryRefrigerator" onchange="validateAppliancesTab()">
+                        <span>Pantry Refrigerator</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">💻 Workstations &amp; IT</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-item" style="display: flex;">
+                        <input type="checkbox" id="officeLighting" onchange="validateAppliancesTab()">
+                        <span>LED Office Lighting</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="desktopWorkstations" onchange="validateAppliancesTab()">
+                        <span>Desktop Workstations</span>
+                    </label>
+                    <label class="checkbox-item" style="display: flex;">
+                        <input type="checkbox" id="laptopCharging" onchange="validateAppliancesTab()">
+                        <span>Laptop Docks / Charging Bays</span>
+                    </label>
+                    <label class="checkbox-item" style="display: flex;">
+                        <input type="checkbox" id="printerCopier" onchange="validateAppliancesTab()">
+                        <span>Printer / Copier Cluster</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="conferenceAV" onchange="validateAppliancesTab()">
+                        <span>Conference Room AV</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="serverRack" onchange="validateAppliancesTab()">
+                        <span>Server / Network Rack</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="upsBackup" onchange="validateAppliancesTab()">
+                        <span>UPS / Battery Backup</span>
+                    </label>
+                    <label class="checkbox-item" style="display: flex;">
+                        <input type="checkbox" id="networkSwitches" onchange="validateAppliancesTab()">
+                        <span>Routers / Network Switches</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">☕ Pantry &amp; Shared Amenities</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-item" style="display: flex;">
+                        <input type="checkbox" id="pantryMicrowave" onchange="validateAppliancesTab()">
+                        <span>Pantry Microwave</span>
+                    </label>
+                    <label class="checkbox-item" style="display: flex;">
+                        <input type="checkbox" id="coffeeMachine" onchange="validateAppliancesTab()">
+                        <span>Coffee Machine / Vending</span>
+                    </label>
+                    <label class="checkbox-item" style="display: flex;">
+                        <input type="checkbox" id="waterDispenser" onchange="validateAppliancesTab()">
+                        <span>Water Dispenser</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="pantryDishwasher" onchange="validateAppliancesTab()">
+                        <span>Pantry Dishwasher</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="digitalSignage" onchange="validateAppliancesTab()">
+                        <span>Lobby Displays / Digital Signage</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🏢 Facility Operations</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="waterPump" onchange="validateAppliancesTab()">
+                        <span>Water Pump / Hydropneumatic System</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="elevator" onchange="validateAppliancesTab()">
+                        <span>Elevator / Lift Systems</span>
+                    </label>
+                    <label class="checkbox-item" style="display: flex;">
+                        <input type="checkbox" id="accessControl" onchange="validateAppliancesTab()">
+                        <span>Access Control / Turnstiles</span>
+                    </label>
+                    <label class="checkbox-item" style="display: flex;">
+                        <input type="checkbox" id="cctv" onchange="validateAppliancesTab()">
+                        <span>CCTV / Security Monitoring</span>
+                    </label>
+                    <label class="checkbox-item" style="display: none;">
+                        <input type="checkbox" id="motorizedBlinds" onchange="validateAppliancesTab()">
+                        <span>Motorized Blinds / Shades</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- APPLIANCES NEXT BUTTON -->
+            <div style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+                <button id="appliancesNextBtn" disabled="" onclick="validateTabWithAppliances(&#39;results&#39;)" style="background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%); color: white; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; padding: 16px 48px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: not-allowed; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: rgba(255, 107, 53, 0.3) 0px 4px 15px; opacity: 0.5;" title="Select at least one equipment group to proceed">
+                    Next: View Results
+                </button>
+            </div>
+        </div>
+
+        <!-- TAB 3: RESULTS - YOUR CARBON INSIGHTS -->
+        <div id="results" class="tab-content">
+            <div style="margin-bottom: 30px;">
+                <h2 style="font-size: 28px; font-weight: 800; color: var(--primary-orange); margin-bottom: 5px;">Your Carbon Insights</h2>
+                <p style="color: var(--text-secondary); font-size: 14px; margin: 0;">Monthly overview</p>
+            </div>
+
+            <!-- CARBON FOOTPRINT INSIGHTS CARD -->
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                    <div>
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Carbon Footprint</div>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--primary-orange);">
+                            <span id="totalCO2Monthly">0.0</span> <span style="font-size: 16px;">kg/month</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button onclick="switchTimeRange(&#39;D&#39;)" style="padding: 8px 14px; background: var(--primary-orange); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 12px;">D</button>
+                        <button onclick="switchTimeRange(&#39;W&#39;)" style="padding: 8px 14px; background: rgba(255, 107, 53, 0.2); color: var(--primary-orange); border: 1px solid rgba(255, 107, 53, 0.5); border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 12px;">W</button>
+                        <button onclick="switchTimeRange(&#39;M&#39;)" style="padding: 8px 12px; background: var(--accent-green); color: white; border: none; border-radius: 50%; font-weight: 600; cursor: pointer; font-size: 12px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">M</button>
+                    </div>
+                </div>
+
+                <!-- DONUT CHART -->
+                <div style="position: relative; height: 280px; display: flex; align-items: center; justify-content: center; margin: 25px 0;">
+                    <canvas id="carbonBreakdownChart" style="max-width: 100%; max-height: 280px;" width="300" height="300"></canvas>
+                </div>
+
+                <!-- BREAKDOWN LIST - CLEAN LAYOUT LIKE THE IMAGE -->
+                <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 30px;">
+                    <!-- HVAC -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+                            <div style="width: 14px; height: 14px; border-radius: 3px; background: #10b981;"></div>
+                            <div style="font-size: 13px; color: var(--text-secondary); font-weight: 500;">HVAC &amp; Ventilation</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 15px; font-weight: 700; color: white;"><span id="transportKg">0.0</span> kg</div>
+                            <div style="font-size: 12px; color: var(--accent-green); font-weight: 600;"><span id="transportPct">34</span>%</div>
+                        </div>
+                    </div>
+
+                    <!-- Lighting -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+                            <div style="width: 14px; height: 14px; border-radius: 3px; background: #a8d5ff;"></div>
+                            <div style="font-size: 13px; color: var(--text-secondary); font-weight: 500;">Lighting</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 15px; font-weight: 700; color: white;"><span id="foodKg">0.0</span> kg</div>
+                            <div style="font-size: 12px; color: var(--accent-green); font-weight: 600;"><span id="foodPct">22</span>%</div>
+                        </div>
+                    </div>
+
+                    <!-- IT -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+                            <div style="width: 14px; height: 14px; border-radius: 3px; background: #6ee7b7;"></div>
+                            <div style="font-size: 13px; color: var(--text-secondary); font-weight: 500;">IT &amp; Devices</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 15px; font-weight: 700; color: white;"><span id="homeKg">0.0</span> kg</div>
+                            <div style="font-size: 12px; color: var(--accent-green); font-weight: 600;"><span id="homePct">18</span>%</div>
+                        </div>
+                    </div>
+
+                    <!-- Pantry -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+                            <div style="width: 14px; height: 14px; border-radius: 3px; background: #fbbf24;"></div>
+                            <div style="font-size: 13px; color: var(--text-secondary); font-weight: 500;">Pantry &amp; Shared Areas</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 15px; font-weight: 700; color: white;"><span id="shoppingKg">0.0</span> kg</div>
+                            <div style="font-size: 12px; color: var(--accent-green); font-weight: 600;"><span id="shoppingPct">10</span>%</div>
+                        </div>
+                    </div>
+
+                    <!-- Facility -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px;">
+                        <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+                            <div style="width: 14px; height: 14px; border-radius: 3px; background: #1f2937;"></div>
+                            <div style="font-size: 13px; color: var(--text-secondary); font-weight: 500;">Facility Operations</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 15px; font-weight: 700; color: white;"><span id="leisureKg">0.0</span> kg</div>
+                            <div style="font-size: 12px; color: var(--accent-green); font-weight: 600;"><span id="leisurePct">16</span>%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BIGGEST CONTRIBUTOR INFO -->
+                <div style="margin-top: 20px; padding: 14px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border-left: 3px solid var(--accent-green);">
+                    <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-secondary);">
+                        <span style="font-size: 18px;">🎯</span>
+                        <span id="biggestContributor">HVAC &amp; ventilation is your biggest contributor</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIP OF THE DAY CARD -->
+            <div class="card" style="background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--accent-green);">
+                <div style="display: flex; gap: 14px;">
+                    <div style="font-size: 28px;">💡</div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Tip of the Day</div>
+                        <div style="font-size: 15px; font-weight: 600; color: white; margin-bottom: 12px; line-height: 1.4;" id="tipOfTheDay">Scheduling HVAC, lighting, and workstation clusters around occupied hours can reduce office electricity use by 10-15%</div>
+                        <button style="font-size: 12px; color: var(--accent-green); background: transparent; border: none; cursor: pointer; font-weight: 700; letter-spacing: 0.5px;">LEARN MORE →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WITH HESEOS SAVINGS -->
+            <div class="card">
+                <div class="card-title" style="color: var(--accent-green); margin-bottom: 20px;">✅ With Heseos - Your Potential Savings</div>
+                <div class="grid-2">
+                    <div class="metric best">
+                        <div class="metric-label">Monthly CO₂ Reduction</div>
+                        <div class="metric-value"><span id="co2ReductionAmount">0.0</span> <span class="metric-unit">kg</span></div>
+                    </div>
+                    <div class="metric best">
+                        <div class="metric-label">Monthly Savings</div>
+                        <div class="metric-value">₹<span id="moneySavedMonth">0</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📋 Annual Office Summary</div>
+                <div class="grid-2">
+                    <div class="metric">
+                        <div class="metric-label">Annual Electricity Cost</div>
+                        <div class="metric-value">₹<span id="annualBillWithout">0</span></div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Annual Energy Use</div>
+                        <div class="metric-value"><span id="annualKwh">0</span> <span class="metric-unit">kWh</span></div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Annual CO₂ Emissions</div>
+                        <div class="metric-value"><span id="baselineEmission">0.00</span> <span class="metric-unit">tons</span></div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Baseline Efficiency Score</div>
+                        <div class="metric-value"><span id="baselineScore">0</span>/100</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title" style="color: var(--accent-green);">🌱 Optimized Annual Impact</div>
+                <div class="grid-2">
+                    <div class="metric best">
+                        <div class="metric-label">Projected Annual Cost</div>
+                        <div class="metric-value">₹<span id="annualBillWith">0</span></div>
+                    </div>
+                    <div class="metric best">
+                        <div class="metric-label">Projected Annual CO₂</div>
+                        <div class="metric-value"><span id="emissionsWith">0.00</span> <span class="metric-unit">tons</span></div>
+                    </div>
+                    <div class="metric best">
+                        <div class="metric-label">Annual Savings</div>
+                        <div class="metric-value">₹<span id="monthlySavings">0</span></div>
+                    </div>
+                    <div class="metric best">
+                        <div class="metric-label">CO₂ Avoided</div>
+                        <div class="metric-value"><span id="co2Avoided">0.00</span> <span class="metric-unit">tons</span></div>
+                    </div>
+                    <div class="metric best">
+                        <div class="metric-label">Reduction Rate</div>
+                        <div class="metric-value"><span id="reductionPercent">32</span>%</div>
+                    </div>
+                    <div class="metric best">
+                        <div class="metric-label">Carbon Score</div>
+                        <div class="metric-value"><span id="carbonScore">0</span>/100</div>
+                    </div>
+                </div>
+                <div style="display:none;"><span id="moneySavedMonthly">0</span></div>
+            </div>
+
+            <!-- NEXT BUTTON TO SCENARIOS -->
+            <div style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+                <button onclick="switchTab(&#39;scenarios&#39;); validateScenariosTab();" style="background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%); color: white; border: none; padding: 16px 48px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);">
+                    Next: View Scenarios
+                </button>
+            </div>
+        </div>
+
+        <!-- TAB 4: SCENARIOS -->
+        <div id="scenarios" class="tab-content">
+            <div class="card">
+                <div class="card-title">📈 10-Year Impact Comparison</div>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Annual CO₂</th>
+                            <th>10-Year CO₂</th>
+                            <th>10-Year Cost</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: var(--accent-red);">❌ Without Heseos</strong></td>
+                            <td id="bau-annual">0.00</td>
+                            <td id="bau-10yr">0.00</td>
+                            <td id="bau-cost">₹0</td>
+                            <td style="color: var(--accent-red);">Baseline</td>
+                        </tr>
+                        <tr style="background: rgba(16, 185, 129, 0.05);">
+                            <td><strong style="color: var(--accent-green);">✅ With Heseos</strong></td>
+                            <td id="heseos-annual">0.00</td>
+                            <td id="heseos-10yr">0.00</td>
+                            <td id="heseos-cost">₹1,25,000</td>
+                            <td><span class="positive">✓ Optimized</span></td>
+                        </tr>
+                        <tr style="background: rgba(59, 130, 246, 0.05);">
+                            <td><strong style="color: var(--accent-blue);">⭐ Best Case + Solar + EV</strong></td>
+                            <td id="bestcase-annual">0.00</td>
+                            <td id="bestcase-10yr">0.00</td>
+                            <td id="bestcase-cost">₹0</td>
+                            <td><span class="positive" style="color: var(--accent-blue);">🌍 Carbon Negative</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="divider"></div>
+
+                <div class="section-title">Key Achievements</div>
+                <div class="grid-2">
+                    <div class="metric best">
+                        <div class="metric-label">CO₂ Saved (10 Years)</div>
+                        <div class="metric-value"><span id="co2Saved10yr">0.00</span> <span class="metric-unit">tons</span></div>
+                    </div>
+                    <div class="metric best">
+                        <div class="metric-label">Money Saved (10 Years)</div>
+                        <div class="metric-value">₹<span id="moneySaved10yr">-1,25,000</span></div>
+                    </div>
+                    <div class="metric best">
+                        <div class="metric-label">Annual Savings Run Rate</div>
+                        <div class="metric-value">₹<span id="impactSavings">0</span></div>
+                    </div>
+                    <div class="metric best">
+                        <div class="metric-label">Net 10-Year Savings</div>
+                        <div class="metric-value">₹<span id="impact10YearSavings">-1,25,000</span></div>
+                    </div>
+                    <div class="metric best">
+                        <div class="metric-label">Annual Carbon Credit Value</div>
+                        <div class="metric-value">₹<span id="impactCreditValue">0</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCENARIOS NEXT BUTTON -->
+            <div style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+                <button id="scenariosNextBtn" disabled="" onclick="switchTab(&#39;credits&#39;); validateCreditsTab();" style="background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%); color: white; border: none; padding: 16px 48px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);">
+                    Next: View Credits
+                </button>
+            </div>
+        </div>
+
+        <!-- TAB 5: CARBON CREDITS -->
+        <div id="credits" class="tab-content">
+            <div class="card">
+                <div class="card-title">💰 Carbon Credit Monetization</div>
+                <p id="creditsDescription" style="color: var(--text-secondary); margin-bottom: 20px;">Earn carbon credits from your office's reduced emissions and sell them on the market.</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Credit Type</th>
+                            <th>Credits/Ton</th>
+                            <th>Price (₹)</th>
+                            <th>Annual Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Energy Efficiency (EE)</strong></td>
+                            <td>1.2</td>
+                            <td>₹850</td>
+                            <td class="positive" id="eeValue">₹0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Renewable Energy Cert (REC)</strong></td>
+                            <td>0.6</td>
+                            <td>₹2,975</td>
+                            <td class="positive" id="recValue">₹0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Heseos Smart Credits</strong></td>
+                            <td>0.4</td>
+                            <td>₹7,650</td>
+                            <td class="positive" id="smartValue">₹0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Behavioral Incentives</strong></td>
+                            <td>0.2</td>
+                            <td>₹12,750</td>
+                            <td class="positive" id="behavValue">₹0</td>
+                        </tr>
+                        <tr style="background: rgba(59, 130, 246, 0.1);">
+                            <td colspan="3"><strong style="color: var(--accent-blue);">TOTAL ANNUAL VALUE</strong></td>
+                            <td class="positive" id="totalCreditValue" style="color: var(--accent-blue);">₹0</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="metric best" style="margin-top: 20px;">
+                    <div class="metric-label">🌍 Environmental Impact</div>
+                    <div class="metric-value">Equivalent to planting <span id="treeEquivalent">0</span> trees</div>
+                </div>
+                <div style="display:none;"><span id="annualCreditValue">0</span></div>
+            </div>
+
+            <!-- CREDITS NEXT BUTTON -->
+            <div style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+                <button id="creditsNextBtn" disabled="" onclick="switchTab(&#39;charts&#39;); validateChartsTab();" style="background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%); color: white; border: none; padding: 16px 48px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);">
+                    Next: View Charts
+                </button>
+            </div>
+        </div>
+
+        <!-- TAB 6: CHARTS -->
+        <div id="charts" class="tab-content">
+            <div class="card">
+                <h3 class="card-title">📊 Savings Breakdown</h3>
+                <div style="position: relative; height: 400px;">
+                    <canvas id="savingsChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">📈 10-Year ROI Timeline</h3>
+                <div style="position: relative; height: 400px;">
+                    <canvas id="roiChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+                </div>
+            </div>
+
+            <!-- CHARTS NEXT BUTTON / DOWNLOAD REPORT -->
+            <div style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+                <button id="chartsNextBtn" disabled="" onclick="generatePDFReport();" style="background: linear-gradient(135deg, var(--accent-green) 0%, #0ea5a5 100%); color: white; border: none; padding: 16px 48px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
+                    Download Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HIDDEN REPORT CONTENT -->
+    <div id="reportContent" style="display: none;"></div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Heseos Carbon &amp; Energy Savings Calculator © 2025 | <a href="file:///C:/Users/HP/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/CD2FC33383F83825E5E8F64FF3C396D62A14EC1A/transfers/2026-14/www.heseos.com">www.heseos.com</a> | Smart Connected &amp; Sustainable Living</p>
+        <p style="margin-top: 10px; font-size: 12px;">Data based on FY 2023-24 electricity rates and India average grid emission factor (0.73 kg CO₂/kWh)</p>
+    </footer>
+
+    <script>
+        // ALL STATES & CITIES DATA
+        const stateData = {
+            'Andaman and Nicobar Islands': ['Port Blair', 'Diglipur', 'Bambooflat', 'Havelock Island'],
+            'Andhra Pradesh': ['Visakhapatnam', 'Vijayawada', 'Tirupati', 'Vikarabad', 'Kakinada', 'Nellore', 'Guntur'],
+            'Arunachal Pradesh': ['Itanagar', 'Naharlagun', 'Pasighat', 'Tezu', 'Ziro'],
+            'Assam': ['Guwahati', 'Silchar', 'Dibrugarh', 'Nagaon', 'Tinsukia', 'Jorhat'],
+            'Bihar': ['Patna', 'Gaya', 'Bhagalpur', 'Muzaffarpur', 'Darbhanga', 'Purnia'],
+            'Chandigarh': ['Chandigarh', 'Mohali', 'Panchkula', 'Zirakpur'],
+            'Chhattisgarh': ['Raipur', 'Bhilai', 'Durg', 'Rajnandgaon', 'Bilaspur', 'Korba'],
+            'Dadra and Nagar Haveli': ['Silvassa', 'Dadra', 'Nagar Haveli', 'Khanvel'],
+            'Daman and Diu': ['Daman', 'Diu', 'Nani Daman', 'Moti Daman'],
+            'Delhi': ['New Delhi', 'East Delhi', 'West Delhi', 'North Delhi', 'South Delhi'],
+            'Goa': ['Panaji', 'Margao', 'Vasco da Gama', 'Mapusa', 'Ponda'],
+            'Gujarat': ['Ahmedabad', 'Surat', 'Vadodara', 'Rajkot', 'Jamnagar', 'Junagadh'],
+            'Haryana': ['Gurgaon', 'Noida', 'Faridabad', 'Hisar', 'Rohtak', 'Panipat'],
+            'Himachal Pradesh': ['Shimla', 'Solan', 'Mandi', 'Kangra', 'Kullu'],
+            'Jammu and Kashmir': ['Srinagar', 'Jammu', 'Leh', 'Kargil', 'Anantnag'],
+            'Jharkhand': ['Ranchi', 'Dhanbad', 'Jamshedpur', 'Bokaro', 'Hazaribagh'],
+            'Karnataka': ['Bangalore', 'Mysore', 'Mangalore', 'Hubballi', 'Belgaum', 'Davangere'],
+            'Kerala': ['Kochi', 'Thiruvananthapuram', 'Kozhikode', 'Thrissur', 'Kottayam'],
+            'Ladakh': ['Leh', 'Kargil', 'Khardung La', 'Hanle'],
+            'Madhya Pradesh': ['Indore', 'Bhopal', 'Jabalpur', 'Gwalior', 'Ujjain'],
+            'Maharashtra': ['Mumbai', 'Pune', 'Nagpur', 'Aurangabad', 'Nashik', 'Thane'],
+            'Manipur': ['Imphal', 'Bishnupur', 'Churachandpur', 'Ukhrul'],
+            'Meghalaya': ['Shillong', 'Tura', 'Jowai', 'Nongstoin'],
+            'Mizoram': ['Aizawl', 'Lunglei', 'Saiha', 'Champhai'],
+            'Nagaland': ['Kohima', 'Dimapur', 'Mokokchung', 'Wokha'],
+            'Odisha': ['Bhubaneswar', 'Cuttack', 'Rourkela', 'Balasore', 'Sambalpur'],
+            'Puducherry': ['Puducherry', 'Yanam', 'Mahe', 'Karaikal'],
+            'Punjab': ['Chandigarh', 'Amritsar', 'Ludhiana', 'Patiala', 'Jalandhar', 'Bathinda'],
+            'Rajasthan': ['Jaipur', 'Jodhpur', 'Udaipur', 'Kota', 'Ajmer', 'Alwar'],
+            'Sikkim': ['Gangtok', 'Pelling', 'Namsai', 'Yangang'],
+            'Tamil Nadu': ['Chennai', 'Coimbatore', 'Madurai', 'Salem', 'Trichy', 'Tiruppur'],
+            'Telangana': ['Hyderabad', 'Warangal', 'Karimnagar', 'Khammam', 'Nizamabad'],
+            'Tripura': ['Agartala', 'Udaipur', 'Dharmanagar', 'Ambassa'],
+            'Uttar Pradesh': ['Lucknow', 'Agra', 'Varanasi', 'Kanpur', 'Meerut', 'Noida'],
+            'Uttarakhand': ['Dehradun', 'Nainital', 'Haridwar', 'Rishikesh', 'Almora'],
+            'West Bengal': ['Kolkata', 'Darjeeling', 'Siliguri', 'Asansol', 'Durgapur']
+        };
+
+        const electricityRates = {
+            'Andaman and Nicobar Islands': 8.20, 'Andhra Pradesh': 7.10, 'Arunachal Pradesh': 7.90, 'Assam': 6.80,
+            'Bihar': 6.45, 'Chandigarh': 7.40, 'Chhattisgarh': 6.50, 'Dadra and Nagar Haveli': 7.30, 'Daman and Diu': 7.25,
+            'Delhi': 7.20, 'Goa': 8.10, 'Gujarat': 7.50, 'Haryana': 7.10, 'Himachal Pradesh': 6.90, 'Jammu and Kashmir': 6.70,
+            'Jharkhand': 6.60, 'Karnataka': 7.80, 'Kerala': 9.20, 'Ladakh': 7.80, 'Madhya Pradesh': 6.75, 'Maharashtra': 8.50,
+            'Manipur': 7.05, 'Meghalaya': 7.15, 'Mizoram': 7.25, 'Nagaland': 7.35, 'Odisha': 6.85, 'Puducherry': 8.00,
+            'Punjab': 6.50, 'Rajasthan': 7.40, 'Sikkim': 7.45, 'Tamil Nadu': 6.80, 'Telangana': 7.05, 'Tripura': 6.95,
+            'Uttar Pradesh': 6.80, 'Uttarakhand': 7.10, 'West Bengal': 7.60
+        };
+
+        // COMMERCIAL RATES (35-50% higher)
+        const commercialRates = {
+            'Andaman and Nicobar Islands': 12.50, 'Andhra Pradesh': 9.80, 'Arunachal Pradesh': 11.20, 'Assam': 9.50,
+            'Bihar': 8.75, 'Chandigarh': 10.20, 'Chhattisgarh': 8.90, 'Dadra and Nagar Haveli': 10.50, 'Daman and Diu': 10.80,
+            'Delhi': 10.80, 'Goa': 11.50, 'Gujarat': 10.20, 'Haryana': 9.80, 'Himachal Pradesh': 9.20, 'Jammu and Kashmir': 9.10,
+            'Jharkhand': 9.15, 'Karnataka': 10.50, 'Kerala': 12.80, 'Ladakh': 10.50, 'Madhya Pradesh': 9.10, 'Maharashtra': 11.50,
+            'Manipur': 9.80, 'Meghalaya': 10.10, 'Mizoram': 10.20, 'Nagaland': 10.50, 'Odisha': 9.35, 'Puducherry': 11.00,
+            'Punjab': 8.90, 'Rajasthan': 10.20, 'Sikkim': 10.50, 'Tamil Nadu': 9.50, 'Telangana': 9.75, 'Tripura': 9.80,
+            'Uttar Pradesh': 9.20, 'Uttarakhand': 9.80, 'West Bengal': 10.50
+        };
+
+        // OFFICE EQUIPMENT SETS FOR DYNAMIC LOADING BY OFFICE TYPE
+        const applianceSets = {
+            'SmallOffice': ['hvacSystem', 'officeLighting', 'laptopCharging', 'printerCopier', 'networkSwitches', 'pantryMicrowave', 'coffeeMachine', 'waterDispenser', 'accessControl', 'cctv'],
+            'MediumOffice': ['hvacSystem', 'airPurifier', 'pantryRefrigerator', 'officeLighting', 'desktopWorkstations', 'laptopCharging', 'printerCopier', 'conferenceAV', 'serverRack', 'upsBackup', 'networkSwitches', 'pantryMicrowave', 'coffeeMachine', 'waterDispenser', 'waterPump', 'accessControl', 'cctv'],
+            'LargeOffice': ['hvacSystem', 'freshAirSystem', 'serverRoomCooling', 'airPurifier', 'pantryWaterHeater', 'pantryRefrigerator', 'officeLighting', 'desktopWorkstations', 'laptopCharging', 'printerCopier', 'conferenceAV', 'serverRack', 'upsBackup', 'networkSwitches', 'pantryMicrowave', 'coffeeMachine', 'waterDispenser', 'digitalSignage', 'waterPump', 'elevator', 'accessControl', 'cctv', 'motorizedBlinds'],
+            'CoworkingSpace': ['hvacSystem', 'airPurifier', 'pantryRefrigerator', 'officeLighting', 'laptopCharging', 'printerCopier', 'conferenceAV', 'networkSwitches', 'pantryMicrowave', 'coffeeMachine', 'waterDispenser', 'accessControl', 'cctv'],
+            'CorporateHQ': ['hvacSystem', 'freshAirSystem', 'serverRoomCooling', 'airPurifier', 'pantryWaterHeater', 'pantryRefrigerator', 'officeLighting', 'desktopWorkstations', 'laptopCharging', 'printerCopier', 'conferenceAV', 'serverRack', 'upsBackup', 'networkSwitches', 'pantryMicrowave', 'coffeeMachine', 'waterDispenser', 'pantryDishwasher', 'digitalSignage', 'waterPump', 'elevator', 'accessControl', 'cctv', 'motorizedBlinds'],
+            'CallCenter': ['hvacSystem', 'freshAirSystem', 'serverRoomCooling', 'airPurifier', 'officeLighting', 'desktopWorkstations', 'laptopCharging', 'printerCopier', 'serverRack', 'upsBackup', 'networkSwitches', 'pantryMicrowave', 'coffeeMachine', 'waterDispenser', 'waterPump', 'accessControl', 'cctv']
+        };
+
+        const propertyMultipliers = {
+            'SmallOffice': 0.95,
+            'MediumOffice': 1.08,
+            'LargeOffice': 1.18,
+            'CoworkingSpace': 1.12,
+            'CorporateHQ': 1.28,
+            'CallCenter': 1.22
+        };
+
+        const officeOccupancyBaselines = {
+            'SmallOffice': 15,
+            'MediumOffice': 45,
+            'LargeOffice': 120,
+            'CoworkingSpace': 60,
+            'CorporateHQ': 180,
+            'CallCenter': 100
+        };
+
+        const hesesosReductions = { 'Basic': 0.15, 'Standard': 0.32, 'Premium': 0.45 };
+        const ageFactors = { 'New': 0.85, 'Moderate': 1.0, 'Old': 1.3 };
+
+        const applianceConsumption = {
+            'hvacSystem': 24,
+            'freshAirSystem': 8,
+            'serverRoomCooling': 10,
+            'airPurifier': 3,
+            'pantryWaterHeater': 4,
+            'pantryRefrigerator': 3,
+            'officeLighting': 16,
+            'desktopWorkstations': 12,
+            'laptopCharging': 6,
+            'printerCopier': 4,
+            'conferenceAV': 3,
+            'serverRack': 10,
+            'upsBackup': 7,
+            'networkSwitches': 3,
+            'pantryMicrowave': 2,
+            'coffeeMachine': 2,
+            'waterDispenser': 1,
+            'pantryDishwasher': 2,
+            'digitalSignage': 4,
+            'waterPump': 5,
+            'elevator': 8,
+            'accessControl': 2,
+            'cctv': 2,
+            'motorizedBlinds': 2
+        };
+
+        let userLead = { name: '', city: '', mobile: '', email: '' };
+        let savingsChart, roiChart;
+
+        function getSelectedText(selectId, fallback = '') {
+            const select = document.getElementById(selectId);
+            if (!select || select.selectedIndex < 0) return fallback;
+            return select.options[select.selectedIndex]?.text || fallback;
+        }
+
+        function hasRequiredPropertyInputs() {
+            return Boolean(
+                document.getElementById('state').value &&
+                document.getElementById('city').value &&
+                document.getElementById('propertyType').value &&
+                document.getElementById('builtUpArea').value &&
+                document.getElementById('people').value &&
+                document.getElementById('monthlyBill').value &&
+                document.getElementById('heseosTier').value
+            );
+        }
+
+        function hasAnyEquipmentSelected() {
+            return Object.keys(applianceConsumption).some(id => document.getElementById(id)?.checked);
+        }
+
+        // TAB SWITCHING FUNCTIONS
+        function switchTab(tabName) {
+            if (tabName !== 'property' && !hasRequiredPropertyInputs()) {
+                showConfirmation('Please complete the office details first to view results');
+                return;
+            }
+
+            if (['results', 'scenarios', 'credits', 'charts'].includes(tabName)) {
+                calculateDashboard();
+
+                if (!hasAnyEquipmentSelected()) {
+                    showConfirmation('Showing results using office profile only. Select equipment for a more accurate estimate.');
+                }
+            }
+
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            const activeTabButton = document.querySelector(`.tab-btn[onclick*="switchTab('${tabName}')"]`);
+            if (activeTabButton) {
+                activeTabButton.classList.add('active');
+            }
+            
+            // Load dynamic appliances when switching to appliances tab
+            if (tabName === 'appliances') {
+                loadDynamicAppliances();
+            }
+
+            if (tabName === 'scenarios') validateScenariosTab();
+            if (tabName === 'credits') validateCreditsTab();
+            if (tabName === 'charts') validateChartsTab();
+        }
+
+        function validateTab(tabName) {
+            let isValid = false;
+            
+            if (tabName === 'property') {
+                isValid = document.getElementById('state').value && 
+                         document.getElementById('city').value && 
+                         document.getElementById('propertyType').value && 
+                         document.getElementById('builtUpArea').value &&
+                         document.getElementById('people').value &&
+                         document.getElementById('monthlyBill').value &&
+                         document.getElementById('heseosTier').value;
+                
+                if (isValid) {
+                    calculateDashboard();
+                    showConfirmation(`✓ Heseos: Smart Connected & Sustainable Living\n✓ Office details captured for ${userLead.name || 'User'}`);
+                    setTimeout(() => {
+                        switchTab('appliances');
+                    }, 3000);
+                }
+            } 
+            else if (tabName === 'appliances') {
+                // Auto-switch to results after a small delay
+                calculateDashboard();
+                showConfirmation(`✓ Heseos: Smart Connected & Sustainable Living\n✓ Equipment selection complete! Loading Results...`);
+                setTimeout(() => {
+                    switchTab('results');
+                }, 3000);
+            }
+        }
+
+        function showConfirmation(message) {
+            const msgEl = document.getElementById('confirmationMessage');
+            msgEl.innerHTML = message;
+            msgEl.style.display = 'block';
+            setTimeout(() => msgEl.style.display = 'none', 3500);
+        }
+
+        // LEAD FORM
+        function submitLead(event) {
+            event.preventDefault();
+            userLead.name = document.getElementById('userName').value;
+            userLead.city = document.getElementById('userCity').value;
+            userLead.mobile = document.getElementById('userMobile').value;
+            userLead.email = document.getElementById('userEmail').value;
+
+            document.getElementById('leadModal').style.display = 'none';
+            localStorage.setItem('heseoUserLead', JSON.stringify(userLead));
+            showConfirmation(`🎉 Welcome ${userLead.name}! Let's calculate your carbon impact.`);
+        }
+
+        // UPDATE CITIES
+        function updateCities() {
+            const state = document.getElementById('state').value;
+            const citySelect = document.getElementById('city');
+            citySelect.innerHTML = '<option value="">Select City</option>';
+            if (stateData[state]) {
+                stateData[state].forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.text = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        }
+
+        function updateRate() {
+            const state = document.getElementById('state').value;
+            const rate = commercialRates[state] || 10.20;
+            document.getElementById('rateDisplay').textContent = rate.toFixed(2);
+        }
+
+        function updateAreaDisplay() {
+            const area = parseInt(document.getElementById('builtUpArea').value) || 0;
+            if (area > 0) {
+                document.getElementById('areaValue').textContent = area.toLocaleString();
+            } else {
+                document.getElementById('areaValue').textContent = '--';
+            }
+            validatePropertyTab();
+        }
+
+        function updatePeopleDisplay() {
+            const people = document.getElementById('people').value;
+            if (people) {
+                document.getElementById('peopleValue').textContent = people;
+            } else {
+                document.getElementById('peopleValue').textContent = '--';
+            }
+            validatePropertyTab();
+        }
+
+        // VALIDATE APPLIANCES TAB - REQUIRE AT LEAST ONE APPLIANCE SELECTED
+        function validateAppliancesTab() {
+            const hasAnyAppliance = hasAnyEquipmentSelected();
+            const nextBtn = document.getElementById('appliancesNextBtn');
+            if (nextBtn) {
+                nextBtn.disabled = !hasAnyAppliance;
+                nextBtn.style.opacity = hasAnyAppliance ? '1' : '0.5';
+                nextBtn.style.cursor = hasAnyAppliance ? 'pointer' : 'not-allowed';
+            }
+        }
+
+        // VALIDATE SCENARIOS TAB - AUTO ENABLED AFTER RESULTS
+        function validateScenariosTab() {
+            const nextBtn = document.getElementById('scenariosNextBtn');
+            if (nextBtn) {
+                nextBtn.disabled = false;
+                nextBtn.style.opacity = '1';
+                nextBtn.style.cursor = 'pointer';
+            }
+        }
+
+        // VALIDATE CREDITS TAB - AUTO ENABLED AFTER SCENARIOS
+        function validateCreditsTab() {
+            const nextBtn = document.getElementById('creditsNextBtn');
+            if (nextBtn) {
+                nextBtn.disabled = false;
+                nextBtn.style.opacity = '1';
+                nextBtn.style.cursor = 'pointer';
+            }
+        }
+
+        // VALIDATE CHARTS TAB - AUTO ENABLED
+        function validateChartsTab() {
+            const nextBtn = document.getElementById('chartsNextBtn');
+            if (nextBtn) {
+                nextBtn.disabled = false;
+                nextBtn.style.opacity = '1';
+                nextBtn.style.cursor = 'pointer';
+            }
+        }
+
+        // ENHANCED VALIDATE TAB WITH APPLIANCES CHECK
+        function validateTabWithAppliances(tabName) {
+            if (tabName === 'results') {
+                const hasAnyAppliance = hasAnyEquipmentSelected();
+
+                if (!hasAnyAppliance) {
+                    showConfirmation('Please select at least one equipment group to proceed');
+                    return;
+                }
+
+                calculateDashboard();
+                showConfirmation(`✓ Equipment selection complete! Loading Results...`);
+                setTimeout(() => {
+                    switchTab('results');
+                    validateScenariosTab();
+                }, 3000);
+            }
+        }
+
+        function validatePropertyTab() {
+            const state = document.getElementById('state').value;
+            const city = document.getElementById('city').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const monthlyBill = document.getElementById('monthlyBill').value;
+            const heseosTier = document.getElementById('heseosTier').value;
+            const builtUpArea = document.getElementById('builtUpArea').value;
+            const people = document.getElementById('people').value;
+
+            let isComplete = state && city && propertyType && monthlyBill && heseosTier && builtUpArea && people;
+
+            if (isComplete) {
+                calculateDashboard();
+            }
+
+            // Enable/disable Next button
+            const nextBtn = document.getElementById('propertyNextBtn');
+            if (nextBtn) {
+                nextBtn.disabled = !isComplete;
+                nextBtn.style.opacity = isComplete ? '1' : '0.5';
+                nextBtn.style.cursor = isComplete ? 'pointer' : 'not-allowed';
+            }
+        }
+
+        function getPropertyContext() {
+            const officeType = getSelectedText('propertyType', 'Your Office');
+            return {
+                assessmentCopy: 'Free personalized carbon assessment for your office space',
+                occupancyTitle: '👥 Office Operations',
+                creditsDescription: "Earn carbon credits from your office's reduced emissions and sell them on the market.",
+                reportSubtitle: `Personalized Analysis for ${officeType}`,
+                reportSubject: 'office space',
+                reportSubjectPossessive: "office space's",
+                automationHeading: '1. Implement Heseos Smart Office Automation',
+                readyHeading: 'Ready to Transform Your Office?',
+                audienceLine: 'Join forward-thinking workplaces saving energy, money, and carbon with Heseos Smart Connected & Sustainable Living.',
+                systemName: 'Heseos Smart Office Energy Intelligence System'
+            };
+        }
+
+        function updatePropertyCopy() {
+            const context = getPropertyContext();
+
+            const assessmentCopy = document.getElementById('assessmentCopy');
+            if (assessmentCopy) {
+                assessmentCopy.textContent = context.assessmentCopy;
+            }
+
+            const occupancyInfoTitle = document.getElementById('occupancyInfoTitle');
+            if (occupancyInfoTitle) {
+                occupancyInfoTitle.textContent = context.occupancyTitle;
+            }
+
+            const creditsDescription = document.getElementById('creditsDescription');
+            if (creditsDescription) {
+                creditsDescription.textContent = context.creditsDescription;
+            }
+        }
+
+        function updateApplianceVisibility() {
+            updatePropertyCopy();
+            
+            // LOAD DYNAMIC APPLIANCES
+            loadDynamicAppliances();
+        }
+
+        function loadDynamicAppliances() {
+            const propertyType = document.getElementById('propertyType').value;
+            const categoryName = getSelectedText('propertyType', 'Select Office Equipment');
+            const applicableAppliances = applianceSets[propertyType] || [];
+
+            // Update the category heading
+            const heading = document.getElementById('appliancesCategoryHeading');
+            if (heading) {
+                heading.textContent = categoryName;
+            }
+
+            Object.keys(applianceConsumption).forEach(id => {
+                const elem = document.getElementById(id);
+                if (elem && elem.parentElement) {
+                    if (applicableAppliances.includes(id)) {
+                        elem.parentElement.style.display = 'flex';
+                    } else {
+                        elem.parentElement.style.display = 'none';
+                        elem.checked = false;
+                    }
+                }
+            });
+
+            validateAppliancesTab();
+        }
+
+        // TIME RANGE SWITCHER FOR CARBON INSIGHTS (D/W/M)
+        function switchTimeRange(range) {
+            // For now, all calculations are monthly
+            // This can be extended to show daily/weekly variants
+            console.log('Time range switched to:', range);
+        }
+
+        // MAIN CALCULATION FUNCTION
+        function calculateDashboard() {
+            const monthlyBill = parseFloat(document.getElementById('monthlyBill').value) || 0;
+            const state = document.getElementById('state').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const rate = commercialRates[state] || 10.20;
+            const people = parseFloat(document.getElementById('people').value) || officeOccupancyBaselines[propertyType] || 25;
+            const applianceAge = document.getElementById('applianceAge').value;
+            const heseosTier = document.getElementById('heseosTier').value;
+
+            // Calculate annual kWh (WITHOUT HESEOS)
+            const annualKwh = (monthlyBill / rate) * 12;
+
+            const propertyFactor = propertyMultipliers[propertyType] || 1.0;
+            let adjustedKwh = annualKwh * propertyFactor;
+            const baselineOccupancy = officeOccupancyBaselines[propertyType] || 40;
+            const occupancyDelta = (people - baselineOccupancy) / baselineOccupancy;
+            const occupancyFactor = Math.max(0.8, Math.min(1.3, 1 + (occupancyDelta * 0.25)));
+            adjustedKwh *= occupancyFactor;
+            const ageFactor = ageFactors[applianceAge] || 1.0;
+            adjustedKwh *= ageFactor;
+
+            let applianceAdjustment = 0;
+            Object.keys(applianceConsumption).forEach(key => {
+                if (document.getElementById(key)?.checked) {
+                    applianceAdjustment += applianceConsumption[key];
+                }
+            });
+            adjustedKwh += (annualKwh * applianceAdjustment / 100);
+
+            // Baseline CO2 (WITHOUT HESEOS)
+            const baselineEmission = (adjustedKwh * 0.73) / 1000;
+            const annualBillWithout = monthlyBill * 12;
+
+            // WITH HESEOS
+            const reductionRate = hesesosReductions[heseosTier] || 0.32;
+            const heseosCO2 = baselineEmission * (1 - reductionRate);
+            const co2Reduced = baselineEmission - heseosCO2;
+            const monthlySavingsAmount = (monthlyBill * reductionRate);
+            const annualSavings = monthlySavingsAmount * 12;
+            const annualBillWith = annualBillWithout - annualSavings;
+
+            // Carbon scores
+            const baselineScore = baselineEmission > 0 ? Math.min(100, Math.round((co2Reduced / baselineEmission) * 50)) : 0;
+            const carbonScore = baselineEmission > 0 ? Math.min(100, Math.round((co2Reduced / baselineEmission) * 100)) : 0;
+
+            // UPDATE WITHOUT HESEOS (RED)
+            document.getElementById('annualBillWithout').textContent = annualBillWithout.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('baselineEmission').textContent = baselineEmission.toFixed(2);
+            document.getElementById('annualKwh').textContent = adjustedKwh.toFixed(0);
+            document.getElementById('baselineScore').textContent = baselineScore;
+
+            // UPDATE WITH HESEOS (GREEN)
+            document.getElementById('annualBillWith').textContent = annualBillWith.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('emissionsWith').textContent = heseosCO2.toFixed(2);
+            document.getElementById('reductionPercent').textContent = (reductionRate * 100).toFixed(0);
+            document.getElementById('carbonScore').textContent = carbonScore;
+
+            // UPDATE SAVINGS (BLUE)
+            document.getElementById('monthlySavings').textContent = annualSavings.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('co2Avoided').textContent = co2Reduced.toFixed(2);
+            document.getElementById('moneySavedMonthly').textContent = monthlySavingsAmount.toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+            // Carbon credits
+            const eeValue = co2Reduced * 1.2 * 850;
+            const recValue = co2Reduced * 0.6 * 2975;
+            const smartValue = co2Reduced * 0.4 * 7650;
+            const behavValue = co2Reduced * 0.2 * 12750;
+            const totalValue = eeValue + recValue + smartValue + behavValue;
+            const trees = Math.round(baselineEmission * 10 / 0.021);
+
+            document.getElementById('eeValue').textContent = '₹' + eeValue.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('recValue').textContent = '₹' + recValue.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('smartValue').textContent = '₹' + smartValue.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('behavValue').textContent = '₹' + behavValue.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('totalCreditValue').textContent = '₹' + totalValue.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('annualCreditValue').textContent = totalValue.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('treeEquivalent').textContent = trees.toLocaleString('en-IN');
+
+            // Impact cards
+            const annualSavingsTotal = monthlySavingsAmount * 12;
+            const investment = 125000;
+            const netSavings10Yr = (annualSavingsTotal * 10) - investment;
+            document.getElementById('impactSavings').textContent = annualSavingsTotal.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('impact10YearSavings').textContent = netSavings10Yr.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('impactCreditValue').textContent = totalValue.toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+            // 10-year scenarios
+            const bau10yr = baselineEmission * 10;
+            const heseos10yr = heseosCO2 * 10;
+            const bestCase10yr = baselineEmission * 10 * -0.05;
+            const bauCost = annualBillWithout * 10;
+            const heseosCost = (annualBillWithout * (1 - reductionRate)) * 10 + investment;
+            const bestCaseCost = (annualBillWithout * 0.5) * 10;
+            const moneySaved = bauCost - heseosCost;
+
+            document.getElementById('bau-annual').textContent = baselineEmission.toFixed(2);
+            document.getElementById('bau-10yr').textContent = bau10yr.toFixed(2);
+            document.getElementById('bau-cost').textContent = '₹' + bauCost.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('heseos-annual').textContent = heseosCO2.toFixed(2);
+            document.getElementById('heseos-10yr').textContent = heseos10yr.toFixed(2);
+            document.getElementById('heseos-cost').textContent = '₹' + heseosCost.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('bestcase-annual').textContent = (baselineEmission * -0.05).toFixed(2);
+            document.getElementById('bestcase-10yr').textContent = bestCase10yr.toFixed(2);
+            document.getElementById('bestcase-cost').textContent = '₹' + bestCaseCost.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('co2Saved10yr').textContent = (bau10yr - heseos10yr).toFixed(2);
+            document.getElementById('moneySaved10yr').textContent = moneySaved.toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+            // Update charts
+            updateCharts(baselineEmission, heseosCO2, annualSavings, heseosCost, bauCost);
+
+            // Update carbon breakdown visualization
+            updateCarbonBreakdown(baselineEmission, reductionRate, monthlyBill);
+        }
+
+        // CHARTS
+        function updateCharts(baseline, heseos, savings, heseosCost, bauCost) {
+            if (typeof Chart === 'undefined') {
+                return;
+            }
+
+            const categories = ['HVAC', 'Lighting', 'IT Load', 'Pantry', 'Facility'];
+            const baselineData = [baseline * 0.34, baseline * 0.22, baseline * 0.18, baseline * 0.10, baseline * 0.16];
+            const heseoData = [heseos * 0.34, heseos * 0.22, heseos * 0.18, heseos * 0.10, heseos * 0.16];
+
+            if (savingsChart) savingsChart.destroy();
+            const ctx1 = document.getElementById('savingsChart');
+            if (!ctx1) {
+                return;
+            }
+            savingsChart = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: categories,
+                    datasets: [
+                        { label: 'Without Heseos', data: baselineData, backgroundColor: 'rgba(239, 68, 68, 0.6)', borderColor: '#ef4444', borderWidth: 2 },
+                        { label: 'With Heseos', data: heseoData, backgroundColor: 'rgba(16, 185, 129, 0.6)', borderColor: '#10b981', borderWidth: 2 }
+                    ]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#ffffff' } } }, scales: { y: { ticks: { color: '#cbd5e1' }, grid: { color: 'rgba(255, 107, 53, 0.1)' } }, x: { ticks: { color: '#cbd5e1' }, grid: { color: 'rgba(255, 107, 53, 0.1)' } } } }
+            });
+
+            if (roiChart) roiChart.destroy();
+            const years = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const roiData = years.map(y => ((bauCost - heseosCost) / 10) * y);
+
+            const ctx2 = document.getElementById('roiChart');
+            if (!ctx2) {
+                return;
+            }
+            roiChart = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: years,
+                    datasets: [
+                        { label: '10-Year ROI (Heseos)', data: roiData, borderColor: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.1)', borderWidth: 3, tension: 0.4, fill: true }
+                    ]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#ffffff' } } }, scales: { y: { ticks: { color: '#cbd5e1' }, grid: { color: 'rgba(255, 107, 53, 0.1)' } }, x: { ticks: { color: '#cbd5e1' }, grid: { color: 'rgba(255, 107, 53, 0.1)' } } } }
+            });
+        }
+
+        // CALCULATE AND DISPLAY CARBON BREAKDOWN BY CATEGORY
+        function updateCarbonBreakdown(baselineEmission, reductionRate, monthlyBill) {
+            // Calculate monthly CO2 in kg
+            const monthlyBaselineCO2 = (baselineEmission * 1000) / 12;  // Convert tons to kg
+            const monthlyCO2WithHeseos = monthlyBaselineCO2 * (1 - reductionRate);
+            const monthlySavings = monthlyBaselineCO2 - monthlyCO2WithHeseos;
+            
+            const categories = {
+                hvac: { pct: 34, color: '#10b981', label: 'HVAC & ventilation' },
+                lighting: { pct: 22, color: '#3b82f6', label: 'lighting' },
+                it: { pct: 18, color: '#84cc16', label: 'IT & devices' },
+                pantry: { pct: 10, color: '#f59e0b', label: 'pantry & shared areas' },
+                facility: { pct: 16, color: '#1f2937', label: 'facility operations' }
+            };
+
+            const transport = (monthlyBaselineCO2 * categories.hvac.pct) / 100;
+            const food = (monthlyBaselineCO2 * categories.lighting.pct) / 100;
+            const home = (monthlyBaselineCO2 * categories.it.pct) / 100;
+            const shopping = (monthlyBaselineCO2 * categories.pantry.pct) / 100;
+            const leisure = (monthlyBaselineCO2 * categories.facility.pct) / 100;
+            const biggestCategory = Object.values(categories).reduce((max, category) => (
+                category.pct > max.pct ? category : max
+            ));
+
+            // Update UI
+            document.getElementById('totalCO2Monthly').textContent = monthlyBaselineCO2.toFixed(1);
+            document.getElementById('transportKg').textContent = transport.toFixed(1);
+            document.getElementById('transportPct').textContent = categories.hvac.pct;
+            document.getElementById('foodKg').textContent = food.toFixed(1);
+            document.getElementById('foodPct').textContent = categories.lighting.pct;
+            document.getElementById('homeKg').textContent = home.toFixed(1);
+            document.getElementById('homePct').textContent = categories.it.pct;
+            document.getElementById('shoppingKg').textContent = shopping.toFixed(1);
+            document.getElementById('shoppingPct').textContent = categories.pantry.pct;
+            document.getElementById('leisureKg').textContent = leisure.toFixed(1);
+            document.getElementById('leisurePct').textContent = categories.facility.pct;
+            document.getElementById('biggestContributor').textContent = `${biggestCategory.label.charAt(0).toUpperCase() + biggestCategory.label.slice(1)} is your biggest contributor`;
+            document.getElementById('tipOfTheDay').textContent = 'Scheduling HVAC, lighting, and workstation clusters around occupied hours can reduce office electricity use by 10-15%';
+
+            // Savings with Heseos
+            document.getElementById('co2ReductionAmount').textContent = monthlySavings.toFixed(1);
+            document.getElementById('moneySavedMonth').textContent = (monthlyBill * reductionRate).toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+            // Draw donut chart
+            drawCarbonChart([transport, food, home, shopping, leisure], [
+                categories.hvac.color,
+                categories.lighting.color,
+                categories.it.color,
+                categories.pantry.color,
+                categories.facility.color
+            ]);
+        }
+
+        // DRAW DONUT CHART
+        function drawCarbonChart(values, colors) {
+            const canvas = document.getElementById('carbonBreakdownChart');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width = 300;
+            const height = canvas.height = 300;
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const radius = 80;
+            const innerRadius = 50;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+
+            // Calculate angles
+            const total = values.reduce((a, b) => a + b, 0);
+            let currentAngle = -Math.PI / 2;
+
+            // Draw segments
+            values.forEach((value, index) => {
+                const sliceAngle = (value / total) * 2 * Math.PI;
+
+                // Draw segment
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+                ctx.lineTo(centerX + Math.cos(currentAngle + sliceAngle) * innerRadius, centerY + Math.sin(currentAngle + sliceAngle) * innerRadius);
+                ctx.arc(centerX, centerY, innerRadius, currentAngle + sliceAngle, currentAngle, true);
+                ctx.closePath();
+                ctx.fillStyle = colors[index];
+                ctx.fill();
+
+                currentAngle += sliceAngle;
+            });
+
+            // Draw white center circle for donut effect
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, innerRadius, 0, 2 * Math.PI);
+            ctx.fillStyle = '#1a2842';
+            ctx.fill();
+        }
+
+        // PDF GENERATION (5-6 SECONDS)
+        function generatePDFReport() {
+            if (!userLead.name) {
+                alert('Please fill the lead form first!');
+                return;
+            }
+
+            // Show loading overlay
+            document.getElementById('pdfLoading').classList.add('active');
+
+            // Generate PDF after 5-6 seconds
+            setTimeout(() => {
+                generateAdvancedReport();
+                document.getElementById('pdfLoading').classList.remove('active');
+            }, 5500);
+        }
+
+        function generateAdvancedReport() {
+            const reportHTML = generateHeseosPDFContent();
+            const element = document.createElement('div');
+            element.innerHTML = reportHTML;
+
+            const opt = {
+                margin: 0,
+                filename: `Heseos-Report-${userLead.name}-${new Date().getFullYear()}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+
+        function generateHeseosPDFContent() {
+            const monthlyBill = parseFloat(document.getElementById('monthlyBill').value);
+            const state = document.getElementById('state').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const rate = commercialRates[state] || 10.20;
+            const city = document.getElementById('city').value;
+            const context = getPropertyContext();
+            const officeTypeLabel = getSelectedText('propertyType', propertyType || 'Office Space');
+
+            return `
+                <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+                    <!-- PAGE 1: COVER -->
+                    <div style="page-break-after: always; text-align: center; padding: 80px 40px; background: linear-gradient(135deg, #0a0e27 0%, #1a2842 100%); color: white; min-height: 100vh;">
+                        <div style="font-size: 64px; color: #FF6B35; font-weight: 900; margin-bottom: 20px; letter-spacing: -3px;">HESEOS</div>
+                        <div style="font-size: 16px; color: #3b82f6; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px;">Smart Connected & Sustainable Living</div>
+                        <h1 style="font-size: 48px; margin-bottom: 20px; color: white;">Carbon & Energy Savings Report</h1>
+                        <p style="font-size: 18px; color: #cbd5e1; margin-bottom: 50px;">${context.reportSubtitle}</p>
+                        
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 12px; margin-top: 80px; border: 2px solid #FF6B35;">
+                            <div style="font-size: 18px; margin-bottom: 15px;"><strong>${userLead.name}</strong></div>
+                            <div style="font-size: 14px; color: #cbd5e1;"><strong>${userLead.city}</strong> | ${new Date().toLocaleDateString('en-IN')}</div>
+                            <div style="font-size: 12px; color: #10b981; margin-top: 20px;">Report Generated: ${new Date().toLocaleString('en-IN')}</div>
+                        </div>
+                    </div>
+
+                    <!-- PAGE 2: EXECUTIVE SUMMARY -->
+                    <div style="page-break-after: always; padding: 60px; background: white;">
+                        <div style="border-bottom: 4px solid #FF6B35; padding-bottom: 20px; margin-bottom: 40px;">
+                            <h2 style="color: #FF6B35; font-size: 28px; margin: 0;">Executive Summary</h2>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%); padding: 25px; border-radius: 8px; border-left: 5px solid #FF6B35; margin-bottom: 30px;">
+                            <h3 style="color: #FF6B35; margin-top: 0;">Your Current Situation (Without Heseos)</h3>
+                            <p style="margin: 10px 0;"><strong>📊 Annual Electricity Bill:</strong> ₹${(monthlyBill * 12).toLocaleString('en-IN')}</p>
+                            <p style="margin: 10px 0;"><strong>⚠️ Annual CO₂ Emissions:</strong> ${document.getElementById('baselineEmission').textContent} tons</p>
+                            <p style="margin: 10px 0;"><strong>⚡ Annual Energy Consumption:</strong> ${document.getElementById('annualKwh').textContent} kWh</p>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, #f0fff4 0%, #dbeafe 100%); padding: 25px; border-radius: 8px; border-left: 5px solid #10b981; margin-bottom: 30px;">
+                            <h3 style="color: #10b981; margin-top: 0;">With Heseos Smart Automation</h3>
+                            <p style="margin: 10px 0;"><strong>💰 Annual Savings:</strong> ₹${document.getElementById('monthlySavings').textContent}</p>
+                            <p style="margin: 10px 0;"><strong>🌱 CO₂ Reduction:</strong> ${document.getElementById('co2Avoided').textContent} tons/year</p>
+                            <p style="margin: 10px 0;"><strong>📈 Reduction Rate:</strong> ${document.getElementById('reductionPercent').textContent}%</p>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); padding: 25px; border-radius: 8px; border-left: 5px solid #3b82f6;">
+                            <h3 style="color: #3b82f6; margin-top: 0;">10-Year Financial Impact</h3>
+                            <p style="margin: 10px 0;"><strong>💸 Total Savings (10 Years):</strong> ₹${document.getElementById('moneySaved10yr').textContent}</p>
+                            <p style="margin: 10px 0;"><strong>🌍 CO₂ Avoided (10 Years):</strong> ${document.getElementById('co2Saved10yr').textContent}</p>
+                            <p style="margin: 10px 0;"><strong>🌱 Equivalent Trees:</strong> ${document.getElementById('treeEquivalent').textContent}</p>
+                        </div>
+                    </div>
+
+                    <!-- PAGE 3: DETAILED ANALYSIS -->
+                    <div style="page-break-after: always; padding: 60px; background: white;">
+                        <div style="border-bottom: 4px solid #FF6B35; padding-bottom: 20px; margin-bottom: 40px;">
+                            <h2 style="color: #FF6B35; font-size: 28px; margin: 0;">Detailed Analysis</h2>
+                        </div>
+
+                        <h3 style="color: #333; margin-top: 0; margin-bottom: 20px;">Office Profile</h3>
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 40px;">
+                            <tr style="background: #f9f9f9;">
+                                <td style="padding: 12px; border-bottom: 1px solid #ddd; font-weight: bold; width: 40%;">Office Type:</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #ddd;">${officeTypeLabel}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; border-bottom: 1px solid #ddd; font-weight: bold;">Location:</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #ddd;">${city}, ${state}</td>
+                            </tr>
+                            <tr style="background: #f9f9f9;">
+                                <td style="padding: 12px; border-bottom: 1px solid #ddd; font-weight: bold;">Monthly Bill:</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #ddd;">₹${monthlyBill.toLocaleString('en-IN')}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; border-bottom: 1px solid #ddd; font-weight: bold;">Electricity Rate:</td>
+                                <td style="padding: 12px; border-bottom: 1px solid #ddd;">₹${rate}/kWh</td>
+                            </tr>
+                        </table>
+
+                        <h3 style="color: #333; margin-top: 0; margin-bottom: 20px;">Scenario Comparison (10 Years)</h3>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%); color: white;">
+                                    <th style="padding: 12px; text-align: left; font-weight: bold;">Scenario</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: bold;">Annual Cost</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: bold;">10-Year Cost</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: bold;">CO₂ (10 Yrs)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background: #ffebee;">
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd; color: #ef4444; font-weight: bold;">❌ Without Heseos</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd;">₹${document.getElementById('bau-annual').textContent}</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd;">₹${document.getElementById('bau-cost').textContent}</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd;">${document.getElementById('bau-10yr').textContent}</td>
+                                </tr>
+                                <tr style="background: #f0fff4;">
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd; color: #10b981; font-weight: bold;">✅ With Heseos</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd;">₹${document.getElementById('heseos-annual').textContent}</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd;">₹${document.getElementById('heseos-cost').textContent}</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd;">${document.getElementById('heseos-10yr').textContent}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- PAGE 4: CARBON CREDITS -->
+                    <div style="page-break-after: always; padding: 60px; background: white;">
+                        <div style="border-bottom: 4px solid #FF6B35; padding-bottom: 20px; margin-bottom: 40px;">
+                            <h2 style="color: #FF6B35; font-size: 28px; margin: 0;">Carbon Credit Monetization</h2>
+                        </div>
+
+                        <p style="color: #666; margin-bottom: 20px;">Your ${context.reportSubject} can earn tradeable carbon credits from reduced emissions. Here's the annual value across different credit markets:</p>
+
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 40px;">
+                            <thead>
+                                <tr style="background: linear-gradient(135deg, #FF6B35 0%, #FFA500 100%); color: white;">
+                                    <th style="padding: 12px; text-align: left;">Credit Type</th>
+                                    <th style="padding: 12px; text-align: right;">Credits/Ton</th>
+                                    <th style="padding: 12px; text-align: right;">Price</th>
+                                    <th style="padding: 12px; text-align: right;">Annual Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background: #f9f9f9;">
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd;">Energy Efficiency (EE)</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd;">1.2</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd;">₹850</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd; color: #10b981; font-weight: bold;">${document.getElementById('eeValue').textContent}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd;">Renewable Energy Cert (REC)</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd;">0.6</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd;">₹2,975</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd; color: #10b981; font-weight: bold;">${document.getElementById('recValue').textContent}</td>
+                                </tr>
+                                <tr style="background: #f9f9f9;">
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd;">Heseos Smart Credits</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd;">0.4</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd;">₹7,650</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd; color: #10b981; font-weight: bold;">${document.getElementById('smartValue').textContent}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border-bottom: 1px solid #ddd;">Behavioral Incentives</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd;">0.2</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd;">₹12,750</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd; color: #10b981; font-weight: bold;">${document.getElementById('behavValue').textContent}</td>
+                                </tr>
+                                <tr style="background: linear-gradient(135deg, #f0fff4 0%, #dbeafe 100%); font-weight: bold;">
+                                    <td colspan="3" style="padding: 12px; border-bottom: 1px solid #ddd;">TOTAL ANNUAL CARBON CREDIT VALUE</td>
+                                    <td style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd; color: #FF6B35; font-size: 16px;">${document.getElementById('totalCreditValue').textContent}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="background: #f0fff4; padding: 20px; border-radius: 8px; border-left: 5px solid #10b981;">
+                            <p><strong>🌍 Environmental Impact:</strong></p>
+                            <p>Your ${context.reportSubjectPossessive} carbon reduction is equivalent to planting <strong>${document.getElementById('treeEquivalent').textContent} trees</strong> annually or driving <strong>5,000+ km less per year</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- PAGE 5: RECOMMENDATIONS -->
+                    <div style="page-break-after: always; padding: 60px; background: white;">
+                        <div style="border-bottom: 4px solid #FF6B35; padding-bottom: 20px; margin-bottom: 40px;">
+                            <h2 style="color: #FF6B35; font-size: 28px; margin: 0;">Recommendations & Next Steps</h2>
+                        </div>
+
+                        <h3 style="color: #333; margin-top: 0;">${context.automationHeading}</h3>
+                        <p style="color: #666; margin-bottom: 20px;">With Heseos Smart Connected & Sustainable Living system, you can achieve:</p>
+                        <ul style="color: #666; margin-bottom: 30px;">
+                            <li style="margin-bottom: 10px;">🔌 <strong>32% Average Energy Savings</strong> through intelligent automation</li>
+                            <li style="margin-bottom: 10px;">📊 <strong>Real-time Monitoring</strong> of energy consumption</li>
+                            <li style="margin-bottom: 10px;">🎯 <strong>Automated Optimization</strong> of HVAC, lighting, and office equipment</li>
+                            <li style="margin-bottom: 10px;">💳 <strong>Carbon Credit Monetization</strong> generating ₹${document.getElementById('totalCreditValue').textContent}/year</li>
+                        </ul>
+
+                        <h3 style="color: #333; margin-top: 30px;">2. Potential Additional Savings</h3>
+                        <p style="color: #666; margin-bottom: 20px;">Consider these add-ons for maximum impact:</p>
+                        <ul style="color: #666; margin-bottom: 30px;">
+                            <li style="margin-bottom: 10px;">☀️ <strong>Solar Panel Installation</strong> - Additional 30-40% savings</li>
+                            <li style="margin-bottom: 10px;">🔋 <strong>Battery Storage</strong> - Maximize solar utilization</li>
+                            <li style="margin-bottom: 10px;">💡 <strong>LED Conversion</strong> - 15% immediate lighting savings</li>
+                            <li style="margin-bottom: 10px;">🌡️ <strong>Smart HVAC</strong> - 25% cooling/heating optimization</li>
+                        </ul>
+
+                        <h3 style="color: #333; margin-top: 30px;">3. Financial Incentives Available</h3>
+                        <ul style="color: #666;">
+                            <li style="margin-bottom: 10px;">✅ Government Subsidies for solar installations</li>
+                            <li style="margin-bottom: 10px;">✅ Tax benefits on renewable energy investments</li>
+                            <li style="margin-bottom: 10px;">✅ Carbon credit monetization through Heseos</li>
+                            <li style="margin-bottom: 10px;">✅ Financing options available</li>
+                        </ul>
+                    </div>
+
+                    <!-- PAGE 6: FOOTER -->
+                    <div style="page-break-after: never; padding: 60px; background: linear-gradient(135deg, #0a0e27 0%, #1a2842 100%); color: white; text-align: center; min-height: 50vh; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h2 style="color: #FF6B35; font-size: 36px; margin: 0 0 20px 0;">${context.readyHeading}</h2>
+                            <p style="color: #cbd5e1; font-size: 16px; margin-bottom: 30px;">${context.audienceLine}</p>
+
+                            <div style="background: rgba(255, 107, 53, 0.1); padding: 20px; border-radius: 8px; margin-bottom: 40px; border: 2px solid #FF6B35;">
+                                <p style="color: #FF6B35; font-weight: bold; margin: 0; font-size: 18px;">📞 Contact Heseos Today</p>
+                                <p style="color: #cbd5e1; margin-top: 10px;">Website: www.heseos.com</p>
+                                <p style="color: #cbd5e1; margin-top: 5px;">For personalized consultation: ${userLead.email} | ${userLead.mobile}</p>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 20px;">
+                            <p style="font-size: 12px; color: #cbd5e1; margin: 0;">This report was generated by ${context.systemName}</p>
+                            <p style="font-size: 12px; color: #10b981; margin-top: 10px;">🌱 Heseos: Smart Connected & Sustainable Living</p>
+                            <p style="font-size: 11px; color: #666; margin-top: 15px;">Data based on FY 2023-24 electricity rates and India average grid emission factor (0.73 kg CO₂/kWh)</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // INITIALIZATION
+        window.addEventListener('load', () => {
+            const savedLead = localStorage.getItem('heseoUserLead');
+            if (savedLead) {
+                userLead = JSON.parse(savedLead);
+                document.getElementById('leadModal').style.display = 'none';
+            }
+            updatePropertyCopy();
+            updateApplianceVisibility();
+            calculateDashboard();
+        });
+    </script>
+
+
+</body></html>
